@@ -83,7 +83,7 @@ def handle_text(message):
         user_chats[user_id].append({"role": "user", "content": user_text})
 
         response = client.chat.completions.create(
-            model="gpt-5.4",
+            model="gpt-4.1",
             messages=user_chats[user_id],
             temperature=0.2
         )
