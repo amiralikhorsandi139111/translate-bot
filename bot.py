@@ -2,6 +2,7 @@ from telebot import TeleBot, types
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
+import traceback
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -96,8 +97,20 @@ def handle_text(message):
 
         bot.reply_to(message, ai_answer)
 
+    # except Exception as e:
+    #     print(f"Error: {e}")
+    #     bot.reply_to(message, "❌ Error while processing your request.")
+
+
+    # در بخشی که درخواست AI ارسال می‌شود
     except Exception as e:
-        print(f"Error: {e}")
-        bot.reply_to(message, "❌ Error while processing your request.")
+        # جمع‌آوری جزئیات کامل خطا
+        error_details = f"❌ خطای سیستم:\n{str(e)}\n\n--- Stack Trace ---\n{traceback.format_exc()}"
+        
+        # ارسال خطا به چت خودتان (ID خودتان را جایگزین کنید)
+        # اگر ID خود را ندارید، کافیست از message.chat.id استفاده کنید تا در همان چت خطا را ببینید
+        bot.reply_to(message, "مشکلی پیش آمد! در حال ارسال جزئیات خطا...")
+        bot.send_message(message.chat.id, error_details)
+
 
 bot.polling()
