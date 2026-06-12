@@ -11,7 +11,7 @@ bot = TeleBot(BOT_TOKEN, threaded=False)
 
 client = OpenAI(
     api_key=AVAL_AI_KEY,
-    base_url="https://api.avalai.ir/v1"
+    base_url="https://openriuther.ai/api/v1"
 )
 
 user_state = {}
