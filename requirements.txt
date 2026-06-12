@@ -1,4 +1,3 @@
 pyTelegramBotAPI
+PyDictionary
 python-dotenv
-openai
-gunicorn
