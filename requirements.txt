@@ -1,3 +1,4 @@
 pyTelegramBotAPI
 PyDictionary
+python-dotenv
 nltk
