@@ -34,7 +34,7 @@ def handle_text(message):
     user_text = message.text.strip().lower()
 
     if message.reply_to_message and not message.reply_to_message.from_user.is_bot:
-        return 
+        return
 
     if user_text == 'get definition':
         user_state[user_id] = "Definition"
@@ -77,7 +77,7 @@ def handle_text(message):
         for pos, def_list in definitions_dict.items():
             if def_list:
                 definitions_found = True
-                pos_map = {'n': 'Noun', 'v': 'Verb', 'a': 'Adjective', 'r': 'Adverb'}
+                pos_map = {'n': 'Noun', 'v': 'Verb', 'a': 'Adjective', 'r': 'Adverb','s':"Subject"}
                 display_pos = pos_map.get(pos, pos.upper())
 
                 response_text += f"*{display_pos}:*\n"
