@@ -17,7 +17,6 @@ def download_nltk_data():
         print("WordNet corpus already downloaded.")
     except LookupError:
         print("WordNet corpus not found. Downloading...")
-        
         nltk.download('wordnet', quiet=True)
         print("WordNet corpus downloaded successfully.")
 
@@ -38,11 +37,9 @@ def send_welcome(message):
 def handle_text(message):
     user_id = message.from_user.id
     user_text = message.text.strip().lower()
-    
     mode = user_state.get(user_id)
 
     if mode == "Definition":
-        
         bot.send_chat_action(message.chat.id, "typing")
 
 
@@ -51,8 +48,7 @@ def handle_text(message):
         except Exception as e:
             print(f"Error during synset lookup for '{user_text}': {e}")
             bot.reply_to(message, f"An internal error occurred while searching for '{user_text}'. Please try again later.")
-            return
-            
+            return     
         if not synsets:
             bot.reply_to(message, f"Sorry, I couldn't find a definition for '{user_text}'. Please check the spelling.")
             return
@@ -61,21 +57,16 @@ def handle_text(message):
         for syn in synsets:
             pos = syn.pos() 
             definition = syn.definition()
-            
-            
             if pos not in definitions_dict:
                 definitions_dict[pos] = []
             if definition not in definitions_dict[pos]:
                 definitions_dict[pos].append(definition)
 
-        
         response_text = f"📖 **Word:** {user_text}\n\n"
         definitions_found = False
         for pos, def_list in definitions_dict.items():
-            
             if def_list:
                 definitions_found = True
-           
                 pos_map = {'n': 'Noun', 'v': 'Verb', 'a': 'Adjective', 'r': 'Adverb'}
                 display_pos = pos_map.get(pos, pos.upper()) # اگر در map نبود، خودش را نمایش بده
 
