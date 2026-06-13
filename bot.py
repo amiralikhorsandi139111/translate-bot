@@ -124,7 +124,7 @@ def handle_text(message):
     # بررسی وضعیت کاربر
     mode = user_state.get(user_id)
 
-    if mode == "Definition":
+    if mode == "Get Definition":
         # نمایش وضعیت "در حال تایپ" به کاربر
         bot.send_chat_action(message.chat.id, "typing")
 
