@@ -26,7 +26,6 @@ download_nltk_data()
 
 user_state = {}
 
-bot.send_message("What can this bot do?")
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
