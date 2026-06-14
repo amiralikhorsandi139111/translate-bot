@@ -77,7 +77,7 @@ def handle_text(message):
         for pos, def_list in definitions_dict.items():
             if def_list:
                 definitions_found = True
-                pos_map = {'n': 'Noun', 'v': 'Verb', 'a': 'Adjective', 'r': 'Adverb','s':"Subject"}
+                pos_map = {'n': 'Noun', 'v': 'Verb', 'a': 'Adjective', 'r': 'Adverb'}
                 display_pos = pos_map.get(pos, pos.upper())
 
                 response_text += f"*{display_pos}:*\n"
