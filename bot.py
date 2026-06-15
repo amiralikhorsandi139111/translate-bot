@@ -32,7 +32,7 @@ def send_welcome(message):
 def handle_text(message):
 
     if message.content_type != 'text':
-        bot.send_message(message.chat.id, "Just send your **English word**, Don't send photo, file, etc", parse_mode="Markdown")
+        bot.send_message(message.chat.id, "Just send your *English word*, Don't send photo, file, etc", parse_mode="Markdown")
         return
 
     user_id = message.from_user.id
