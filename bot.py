@@ -30,12 +30,13 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
+
+    if message.content_type != 'text':
+        bot.send_message(message.chat.id, "لطفاً فقط یک کلمه انگلیسی بفرستید. عکس یا فایل ارسال نکنید.")
+        return
+
     user_id = message.from_user.id
     user_text = message.text.strip().lower()
-
-    if not message.text:
-        bot.send_message(message.chat.id, "Just send your *English word*, Don't send photo, file, etc")
-        return
     
     if message.reply_to_message and not message.reply_to_message.from_user.is_bot:
         return
