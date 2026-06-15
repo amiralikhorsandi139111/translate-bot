@@ -86,7 +86,7 @@ def handle_text(message):
                 display_pos = pos_map.get(pos, pos.upper())
 
                 response_text += f"*{display_pos}:*\n"
-                for i, definition in enumerate(def_list[:3]):
+                for i, definition in enumerate(def_list[:]):
                     response_text += f"{i+1}. {definition}\n"
                 response_text += "\n"
 
