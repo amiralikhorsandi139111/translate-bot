@@ -33,6 +33,10 @@ def handle_text(message):
     user_id = message.from_user.id
     user_text = message.text.strip().lower()
 
+    if not message.text:
+        bot.send_message(message.chat.id, "Just send your *English word*, Don't send photo, file, etc")
+        return
+    
     if message.reply_to_message and not message.reply_to_message.from_user.is_bot:
         return
 
@@ -77,7 +81,7 @@ def handle_text(message):
         for pos, def_list in definitions_dict.items():
             if def_list:
                 definitions_found = True
-                pos_map = {'n': 'Noun', 'v': 'Verb', 'a': 'Adjective', 'r': 'Adverb'}
+                pos_map = {'n': 'Noun', 'v': 'Verb', 'a': 'Adjective', 'r': 'Adverb', 's': 'Adjective Satellite'}
                 display_pos = pos_map.get(pos, pos.upper())
 
                 response_text += f"*{display_pos}:*\n"
