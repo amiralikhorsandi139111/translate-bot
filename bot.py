@@ -28,7 +28,7 @@ def send_welcome(message):
     markup.add(btn_definition)
     bot.reply_to(message, "Welcome! Please use the button below to get a definition.", reply_markup=markup)
 
-@bot.message_handler(content_types=["text"])
+@bot.message_handler(content_types=["text", "photo", "document", "sticker", "video", "audio"])
 def handle_text(message):
 
     if message.content_type != 'text':
